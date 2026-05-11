@@ -16,7 +16,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
-    <%= yield %>
+  <body style="display: flex; min-height: 100vh; margin: 0;">
+    <%= render 'layouts/sidebar' %>
+    
+    <main style="flex: 1; padding: 32px;">
+      <%= yield %>
+    </main>
   </body>
 </html>

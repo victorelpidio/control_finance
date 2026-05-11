@@ -3,7 +3,8 @@ class BanksController < ApplicationController
 
   # GET /banks or /banks.json
   def index
-    @banks = Bank.all
+    @q = Bank.ransack(params[:q])
+    @banks = @q.result(distinct: true)
   end
 
   # GET /banks/1 or /banks/1.json
@@ -25,7 +26,7 @@ class BanksController < ApplicationController
 
     respond_to do |format|
       if @bank.save
-        format.html { redirect_to @bank, notice: "Bank was successfully created." }
+        format.html { redirect_to banks_path, notice: "Bank was successfully created." }
         format.json { render :show, status: :created, location: @bank }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class BanksController < ApplicationController
   def update
     respond_to do |format|
       if @bank.update(bank_params)
-        format.html { redirect_to @bank, notice: "Bank was successfully updated." }
+        format.html { redirect_to banks_path  , notice: "Bank was successfully updated." }
         format.json { render :show, status: :ok, location: @bank }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -1,0 +1,20 @@
+<%= search_form_for @q do |f| %>
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+     <form class="row g-3">
+        <div class="col-md-4">
+          <%= f.label :name_cont, "Buscar banco", class: "form-label" %>
+          <%= f.search_field :name_cont, placeholder: "Digite o nome...", class: "form-control" %>
+        </div>
+        </br>
+        
+        <div class="col-12">
+          <%= f.submit "Buscar", class: "btn btn-primary" %>
+          <%= link_to "Limpar", banks_path, class: "btn btn-secondary" %>
+          <%= link_to "Adicionar Banco", new_bank_path, class: 'btn btn-success' %>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>
+
