@@ -1,0 +1,11 @@
+<% content_for :title, "New panel" %>
+
+<h1>New panel</h1>
+
+<%= render "form", panel: @panel %>
+
+<br>
+
+<div>
+  <%= link_to "Back to panels", panels_path %>
+</div>
