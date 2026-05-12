@@ -1,0 +1,24 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover align-middle">
+    <thead class="table">
+      <tr>
+        <th scope="col">Mês</th>
+        <th scope="col">Salário do mês</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @panels.each do |panel| %>
+        <tr>
+          <td><%= month_name(panel.month) %>/<%= panel.year %></td>
+          <td><%= number_to_currency(panel.pay) %></td>
+          <td>
+            <div style="display: flex; gap: 8px;">
+              <%= link_to 'Editar', edit_panel_path(panel), class: 'btn btn-sm btn-warning' %>
+              <%= button_to "Deletar", panel_path(panel), method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'btn btn-sm btn-danger' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

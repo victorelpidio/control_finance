@@ -1,10 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @panel %>
+<p>
+  <strong>Mês:</strong>
+  <%= @panel.month %>
+</p>
 
-<div>
-  <%= link_to "Edit this panel", edit_panel_path(@panel) %> |
-  <%= link_to "Back to panels", panels_path %>
+<p>
+  <strong>Ano:</strong>
+  <%= @panel.year %>
+</p>
 
-  <%= button_to "Destroy this panel", @panel, method: :delete %>
-</div>
+<p>
+  <strong>Salário:</strong>
+  <%= number_to_currency(@panel.pay) %>
+</p>

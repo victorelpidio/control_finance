@@ -13,7 +13,6 @@ RSpec.describe "panels/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", panels_path, "post" do
-
       assert_select "input[name=?]", "panel[month]"
 
       assert_select "input[name=?]", "panel[year]"

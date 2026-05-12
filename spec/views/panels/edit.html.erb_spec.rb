@@ -17,7 +17,6 @@ RSpec.describe "panels/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", panel_path(panel), "post" do
-
       assert_select "input[name=?]", "panel[month]"
 
       assert_select "input[name=?]", "panel[year]"

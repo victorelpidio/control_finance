@@ -1,0 +1,26 @@
+<%= search_form_for @q do |f| %>
+  <div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+      <div class="row g-2">
+        <div class="col-md-3">
+          <div class="form">
+            <%= f.label :month_eq, "Mês", class: "form-label" %>
+            <%= f.select :month_eq, months, { prompt: 'Selecione o mês' }, class: "form-select" %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form">
+            <%= f.label :year_eq, "Ano", class: "form-label" %>
+            <%= f.select :year_eq, years, { prompt: 'Selecione o ano' }, class: "form-select" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mt-3">
+        <%= f.submit "Buscar", class: "btn btn-primary" %>
+        <%= link_to "Limpar", panels_path, class: "btn btn-secondary" %>
+        <%= link_to "Adicionar Painel de Mês", new_panel_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+<% end %>

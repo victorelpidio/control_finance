@@ -3,7 +3,8 @@ class PanelsController < ApplicationController
 
   # GET /panels or /panels.json
   def index
-    @panels = Panel.all
+    @q = Panel.ransack(params[:q])
+    @panels = @q.result(distinct: true)
   end
 
   # GET /panels/1 or /panels/1.json
@@ -12,7 +13,7 @@ class PanelsController < ApplicationController
 
   # GET /panels/new
   def new
-    @panel = Panel.new
+    @panel = Panel.new(year: Date.current.year)
   end
 
   # GET /panels/1/edit
@@ -25,7 +26,7 @@ class PanelsController < ApplicationController
 
     respond_to do |format|
       if @panel.save
-        format.html { redirect_to @panel, notice: "Panel was successfully created." }
+        format.html { redirect_to panels_path, notice: "Panel was successfully created." }
         format.json { render :show, status: :created, location: @panel }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class PanelsController < ApplicationController
   def update
     respond_to do |format|
       if @panel.update(panel_params)
-        format.html { redirect_to @panel, notice: "Panel was successfully updated." }
+        format.html { redirect_to panels_path, notice: "Panel was successfully updated." }
         format.json { render :show, status: :ok, location: @panel }
       else
         format.html { render :edit, status: :unprocessable_entity }

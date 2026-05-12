@@ -1,29 +1,22 @@
-
 <%= simple_form_for(@panel) do |f| %>
   <div class="card shadow-sm mb-4">
     <div class="card-body">
-     <form class="row g-3">
-
-        <div class="col-md-6">
+      <form class="row g-3">
+        <div class="col-md-3">
           <%= f.input :month, label: 'Mês', collection: months, prompt: 'Selecione o mês', input_html: { class: "form-select" }, label_html: { class: 'form-label fw-bold' } %>
         </div>
-
-        <div class="col-md-6">
-          <%= f.input :year, label: 'Ano', collection: years, prompt: 'Selecione o ano', input_html: { class: "form-select" }, label_html: { class: 'form-label fw-bold' } %>
+        <div class="col-md-3">
+          <%= f.input :year, label: 'Ano', prompt: 'Selecione o ano', input_html: { class: "form-select" }, label_html: { class: 'form-label fw-bold' }, disabled: true %>
         </div>
-
-        <div class="col-md-6">
+        <div class="col-md-3">
           <%= f.input :pay, label: 'Salário', placeholder: 'Digite o salário', input_html: { class: "form-control" }, label_html: { class: 'form-label fw-bold' } %>
         </div>
-        </br>
-        
-        <div class="col-12">
-          <%= f.button :submit, class: "btn btn-primary" %>
-          <%= link_to "Voltar", panels_path, class: "btn btn-secondary" %>
-        </div>
-      </form>
-    </div>
+      </br>
+      <div class="col-12">
+        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= link_to "Voltar", panels_path, class: "btn btn-secondary" %>
+      </div>
+    </form>
   </div>
-
-
+</div>
 <% end %>
