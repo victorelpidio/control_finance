@@ -3,11 +3,19 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+     <form class="row g-3">
+        <div class="col-md-6">
+          <%= f.input :name, label: 'Nome do Banco', placeholder: 'Digite o nome do banco', input_html: { class: "form-control" }, label_html: { class: 'form-label fw-bold' } %>
+        </div>
+        </br>
+        
+        <div class="col-12">
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <%= link_to "Voltar", banks_path, class: "btn btn-secondary" %>
+        </div>
+      </form>
+    </div>
   </div>
 <% end %>
