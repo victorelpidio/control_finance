@@ -14,3 +14,7 @@
  *= require_self
  */
 @import "bootstrap";
+
+.modal-backdrop.show {
+  opacity: 0.2 !important;
+}
