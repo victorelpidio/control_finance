@@ -1,5 +1,5 @@
 class Panel < ApplicationRecord
-  has_many :purchases
+  has_many :purchases, dependent: :destroy
 
   validates :month, presence: true
   validates :year, presence: true

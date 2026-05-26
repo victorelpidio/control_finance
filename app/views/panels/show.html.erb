@@ -1,16 +1,57 @@
-<p style="color: green"><%= notice %></p>
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <div class="row g-2">
+        <div class="col-md-3">
+         <h2><%= month_name(@panel.month) %>/<%= @panel.year %></h2>
 
-<p>
-  <strong>Mês:</strong>
-  <%= @panel.month %>
-</p>
+          <p>
+            <strong>Salário:</strong>
+            <%= number_to_currency(@panel.pay) %>
+          </p>
+        </div>
+      </div>
+       <div class="col-md-3">
+         <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#purchaseModal">
+            Adicionar Compra
+          </button>
+        </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Ano:</strong>
-  <%= @panel.year %>
-</p>
+  <!-- GRID DE COMPRAS -->
+  <div class="table-responsive">
+  <table class="table table-striped table-hover">
 
-<p>
-  <strong>Salário:</strong>
-  <%= number_to_currency(@panel.pay) %>
-</p>
+    <thead>
+      <tr>
+        <th>Descrição</th>
+        <th>Banco</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @panel.purchases.each do |purchase| %>
+        <tr>
+          <td><%= purchase.description %></td>
+          <td><%= purchase.bank&.name || '-' %></td>
+          <td><%= number_to_currency(purchase.value) %></td>
+          <td><%= l(purchase.date) %></td>
+          <td>
+            <%= link_to "Editar", edit_panel_purchase_path(@panel, purchase), class: "btn btn-sm btn-outline-primary" %>
+            <%= button_to "Deletar", panel_purchase_path(@panel, purchase), method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'btn btn-sm btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'purchases/form_modal', panel: @panel %>
+

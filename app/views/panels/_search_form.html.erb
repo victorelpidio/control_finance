@@ -1,6 +1,5 @@
 <%= search_form_for @q do |f| %>
   <div class="card shadow-sm mb-4">
-
     <div class="card-body">
       <div class="row g-2">
         <div class="col-md-3">
@@ -16,10 +15,14 @@
           </div>
         </div>
       </div>
-      <div class="col-12 mt-3">
-        <%= f.submit "Buscar", class: "btn btn-primary" %>
-        <%= link_to "Limpar", panels_path, class: "btn btn-secondary" %>
-        <%= link_to "Adicionar Painel de Mês", new_panel_path, class: 'btn btn-success' %>
+      <div class="col-12 mt-3 d-flex justify-content-between align-items-center">
+        <div>
+          <%= f.submit "Buscar", class: "btn btn-primary" %>
+          <%= link_to "Limpar", panels_path, class: "btn btn-secondary" %>
+        </div>
+        <div>
+          <%= link_to "Adicionar Painel de Mês", new_panel_path, class: "btn btn-success" %>
+        </div>
       </div>
     </div>
   </div>
