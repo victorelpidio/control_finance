@@ -14,7 +14,7 @@
           <td><%= number_to_currency(panel.pay) %></td>
           <td>
             <div style="display: flex; gap: 8px;">
-               <%= link_to 'Adicionar Compra', panel_path(panel), class: 'btn btn-sm btn-primary' %>
+              <%= link_to 'Adicionar Compra', panel_path(panel), class: 'btn btn-sm btn-primary' %>
               <%= link_to 'Editar', edit_panel_path(panel), class: 'btn btn-sm btn-warning' %>
               <%= button_to "Deletar", panel_path(panel), method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'btn btn-sm btn-danger' %>
             </div>

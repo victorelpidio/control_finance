@@ -42,6 +42,6 @@ class PurchasesController < ApplicationController
 
   def purchase_params
     params.require(:purchase)
-          .permit(:description, :value, :date, :bank_id)
+          .permit(:description, :value, :date, :bank_id, :fixed, :recurring)
   end
 end

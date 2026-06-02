@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_05_26_125637) do
+ActiveRecord::Schema[7.2].define(version: 2026_06_02_144546) do
   create_table "banks", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_26_125637) do
     t.integer "panel_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "fixed", default: false, null: false
     t.index ["bank_id"], name: "index_purchases_on_bank_id"
     t.index ["panel_id"], name: "index_purchases_on_panel_id"
   end
