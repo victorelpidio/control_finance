@@ -1,3 +1,16 @@
+<% if flash[:alert].present? %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= flash[:alert] %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+<% if flash[:notice].present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= flash[:notice] %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
 <div class="card shadow-sm mb-4">
   <div class="card-body">
     <div class="row g-2">
@@ -48,7 +61,10 @@
             <% end %>
           </td>
           <td>
-            <%= button_to "Deletar", panel_purchase_path(@panel, purchase), method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'btn btn-sm btn-danger' %>
+            <div class="d-flex gap-2">
+              <%= link_to 'Editar', '#', class: 'btn btn-primary btn-sm', data: { bs_toggle: 'modal', bs_target: "#purchaseEditModal-#{purchase.id}" } %>
+              <%= button_to "Deletar", panel_purchase_path(@panel, purchase), method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'btn btn-sm btn-danger', form: { class: 'd-inline' } %>
+            </div>
           </td>
         </tr>
       <% end %>
@@ -56,3 +72,7 @@
   </table>
 </div>
 <%= render 'purchases/form_modal', panel: @panel %>
+
+<% @panel.purchases.each do |purchase| %>
+  <%= render 'purchases/edit_modal', panel: @panel, purchase: purchase %>
+<% end %>

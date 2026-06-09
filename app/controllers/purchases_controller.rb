@@ -3,24 +3,26 @@ class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:edit, :update, :destroy]
 
   def create
-    @panel = Panel.find(params[:panel_id])
-    @purchase = @panel.purchases.build(purchase_params)
+    @purchase = Purchase.new(purchase_params.merge(panel: @panel))
 
     if @purchase.save
       redirect_to @panel, notice: 'Compra adicionada com sucesso.'
     else
+      flash.now[:alert] = 'Não foi possível salvar a compra. Verifique os campos e tente novamente.'
       render 'panels/show', status: :unprocessable_entity
     end
   end
 
   def edit
+    render 'panels/show'
   end
 
   def update
     if @purchase.update(purchase_params)
       redirect_to @panel, notice: 'Compra atualizada com sucesso.'
     else
-      render :edit, status: :unprocessable_entity
+      flash.now[:alert] = 'Não foi possível atualizar a compra. Verifique os campos e tente novamente.'
+      render 'panels/show', status: :unprocessable_entity
     end
   end
 
