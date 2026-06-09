@@ -26,7 +26,7 @@ class PanelsController < ApplicationController
 
     respond_to do |format|
       if @panel.save
-        format.html { redirect_to panels_path, notice: "Panel was successfully created." }
+        format.html { redirect_to panels_path, notice: "Painel criado com sucesso." }
         format.json { render :show, status: :created, location: @panel }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class PanelsController < ApplicationController
   def update
     respond_to do |format|
       if @panel.update(panel_params)
-        format.html { redirect_to panels_path, notice: "Panel was successfully updated." }
+        format.html { redirect_to panels_path, notice: "Painel atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @panel }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class PanelsController < ApplicationController
     @panel.destroy!
 
     respond_to do |format|
-      format.html { redirect_to panels_path, status: :see_other, notice: "Panel was successfully destroyed." }
+      format.html { redirect_to panels_path, status: :see_other, notice: "Painel foi destruído com sucesso." }
       format.json { head :no_content }
     end
   end
